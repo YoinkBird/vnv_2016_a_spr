@@ -12,6 +12,9 @@ public class LList { // loop-list
     // returns true if and only if 
     // 1. this is a loop-list
     // 2. size is the number of nodes in this
+
+    // TODO: remove hard-coding
+    return false;
   }
 
   // pset3_1b
@@ -30,5 +33,7 @@ public class LList { // loop-list
   public String toString(){
     // returns a string representation of the list of elemetns in this,
     // where consecutive elements are separated by a space
+    // TODO: remove hard-coding
+    return null;
   }
 }
