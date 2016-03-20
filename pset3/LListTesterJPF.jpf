@@ -1,0 +1,5 @@
+# http://babelfish.arc.nasa.gov/trac/jpf/wiki/user/run#a3targetspecification
+# http://babelfish.arc.nasa.gov/trac/jpf/wiki/user/config
+target = LListTesterJPF
+target.args = 3,1
+classpath=.
