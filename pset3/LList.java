@@ -155,16 +155,18 @@ public class LList { // loop-list
   public String repr(){
     // returns a string representation of the list of elements in this,
     // in which each node's elem is printed and the last node is indicated as pointing to self
-    String repr = "";
+    String repr = "empty";
     // iterator
-    Node current = header;
-    repr += header.reprSimple();
-    while(current.next != current){
-      current = current.next;
-      repr += "->" + current.reprSimple();
-      // indicate last node
-      if(current.next == current){
-        repr += "->" + "self";
+    if(header != null){
+      Node current = header;
+      repr += header.reprSimple();
+      while(current.next != current){
+        current = current.next;
+        repr += "->" + current.reprSimple();
+        // indicate last node
+        if(current.next == current){
+          repr += "->" + "self";
+        }
       }
     }
     return repr;
@@ -174,12 +176,15 @@ public class LList { // loop-list
   public String toString(){
     // returns a string representation of the list of elements in this,
     // where consecutive elements are separated by a space
-    String repr = Integer.toString(header.elem);
-    // iterator
-    Node current = header;
-    while(current.next != current){
-      current = current.next;
-      repr += " " + current.elem;
+    String repr = "";
+    if(header != null){
+      repr = Integer.toString(header.elem);
+      // iterator
+      Node current = header;
+      while(current.next != current){
+        current = current.next;
+        repr += " " + current.elem;
+      }
     }
     return repr;
   }
