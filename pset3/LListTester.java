@@ -1,8 +1,17 @@
 import org.junit.*;
 //import org.junit.Test;
 import static org.junit.Assert.*;
+// for printing out testNames
+import org.junit.rules.*;
+import org.junit.runner.*;
 
 public class LListTester{
+  @Rule
+  public TestRule watcher = new TestWatcher() {
+    protected void starting(Description description) {
+      System.out.println("Starting test: " + description.getMethodName());
+    }
+  };
   @Test public void testRepOk0Nodes() {
     LList l1 = new LList();
     int values[] = new int[]{};
