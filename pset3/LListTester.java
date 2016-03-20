@@ -71,16 +71,17 @@ public class LListTester{
     /*
     System.out.println("LList.toString:[" + l.toString() + "]");
     */
-    assertEquals(l.toString(),expected);
+    assertEquals(expected, l.toString());
   }
 
   @Test public void addFirst_test_toString() {
     LList l = new LList();
     int values[] = new int[]{0,1,2,3};
+    String expected = "3 2 1 0";
     for(int n : values){
       l.addFirst(n);
     }
-    assertEquals(l.toString(),"3 2 1 0");
+    assertEquals(expected, l.toString());
     assertTrue(l.repOk());
   }
 
