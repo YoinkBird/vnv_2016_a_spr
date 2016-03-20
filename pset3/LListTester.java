@@ -84,13 +84,31 @@ public class LListTester{
     assertTrue(l.repOk());
   }
 
+  @Test public void addLast_test_toString() {
+    LList l = new LList();
+    int values[] = new int[]{0,1,2,3};
+    String expected = "0 1 2 3";
+    for(int n : values){
+      System.out.println("adding " + n);
+      l.addLast(n);
+    }
+    System.out.println("LList.toString:[" + l.toString() + "]");
+    System.out.println("LList.repr:" + l.repr());
+
+    assertEquals(expected, l.toString());
+    assertTrue(values.length == l.size);
+    assertTrue(l.repOk());
+  }
+
   // pset2a JUnit Tests [6 points]
   /*
     Write some JUnit tests such that each test makes exactly one invocation of addLast
     and running all the tests provides full statement coverage for the method addLast
   */
+  @Ignore
   @Test public void test0(){
   }
+  @Ignore
   @Test public void test1(){
   }
 
