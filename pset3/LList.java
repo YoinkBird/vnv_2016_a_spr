@@ -1,3 +1,4 @@
+import java.util.*;
 /*
   a loop-list is a singly-linked list, which is
   either empty
@@ -55,9 +56,29 @@ public class LList { // loop-list
   // 1. this is a loop-list
   // 2. size is the number of nodes in this
   public boolean repOk() {
+    // either empty
+    if (header == null) return size == 0;
+    // track visited nodes
+    Set<Node> visited = new HashSet<Node>();
+    // iterator
+    Node current = header;
 
-    // TODO: remove hard-coding
-    return false;
+    // or its last node has a pointer back to that node itself.
+    int elemCtr = 0; //safeguard against infinite loops
+    while(elemCtr <= size){
+      elemCtr++;
+      // add current node to visited nodes
+      //   Set.add() Returns: true if this set did not already contain the specified element
+      if (!visited.add(current)) return false;
+
+      // done when last node points to itself
+      if(current.next == current){
+        break;
+      }
+      // advance through loop
+      current = current.next;
+    }
+    return size == visited.size();
   }
 
   // pset3_1b

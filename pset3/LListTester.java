@@ -3,14 +3,41 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class LListTester{
+  @Test public void testRepOk0Nodes() {
+    LList l1 = new LList();
+    int values[] = new int[]{};
+    LList l = l1.generateTestList(values);
+    assertTrue(l.repOk());
+    assertTrue(values.length == l.size);
+  }
+
+  @Test public void testRepOk1Nodes() {
+    LList l1 = new LList();
+    int values[] = new int[]{0};
+    LList l = l1.generateTestList(values);
+    assertTrue(l.repOk());
+    assertTrue(values.length == l.size);
+  }
+
+  @Test public void testRepOk4Nodes() {
+    LList l1 = new LList();
+    int values[] = new int[]{0,1,2,4};
+    LList l = l1.generateTestList(values);
+    assertTrue(l.repOk());
+    assertTrue(values.length == l.size);
+  }
+
   @Test public void testStringMthds() {
     LList l1 = new LList();
     int values[] = new int[]{0,1,2,4};
     String expected = "4 2 1 0";
     LList l = l1.generateTestList(values);
+    assertTrue(l.repOk());
 
     System.out.println("LList.repr:" + l.repr());
+    /*
     System.out.println("LList.toString:[" + l.toString() + "]");
+    */
     assertEquals(l.toString(),expected);
   }
 
