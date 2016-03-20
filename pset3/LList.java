@@ -40,10 +40,12 @@ public class LList { // loop-list
     int config = 0;
     return generateTestList(values,config);
   }
-
   /*
    * config
       0 : valid list
+      1 : invalidate loop-list - broken'tail'
+      2 : break toString - corrupt elem
+   
    */
   public LList generateTestList(int[] values, int config){
     LList l = new LList();
@@ -51,8 +53,16 @@ public class LList { // loop-list
     for(int i = 0; i < values.length; i++){
       Node n = new Node();
       n.elem = values[i];
+      // 2: corrupt elements
+      if(config == 2){
+        n.elem++;
+      }
       if(i == 0){
         n.next = n;
+        // 1: break 'tail'
+        if(config == 1){
+          n.next = null;
+        }
       }else{
         n.next = l.header;
       }

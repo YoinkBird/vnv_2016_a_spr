@@ -36,11 +36,25 @@ public class LListTester{
     assertTrue(values.length == l.size);
   }
 
+  @Test (expected=NullPointerException.class)
+    public void testRepOk4NodesFailTail() {
+    LList l1 = new LList();
+    int values[] = new int[]{0,1,2,4};
+    // corrupt 'tail'
+    LList l = l1.generateTestList(values,1);
+//    System.out.println("LList.repr:" + l.repr());
+//    expected: java.lang.NullPointerException
+    assertTrue(l.repOk());
+    // create mismatch
+    l.size--;
+    assertFalse(values.length == l.size);
+  }
+
   @Test public void testRepOk4NodesFail() {
     LList l1 = new LList();
     int values[] = new int[]{0,1,2,4};
-    LList l = l1.generateTestList(values);
-    assertTrue(l.repOk());
+    // bad string
+    LList l = l1.generateTestList(values,2);
     // create mismatch
     l.size--;
     assertFalse(values.length == l.size);
