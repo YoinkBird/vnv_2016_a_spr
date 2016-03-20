@@ -36,6 +36,16 @@ public class LList { // loop-list
 
   // generate add-first list
   public LList generateTestList(int[] values){
+    // create a good one
+    int config = 0;
+    return generateTestList(values,config);
+  }
+
+  /*
+   * config
+      0 : valid list
+   */
+  public LList generateTestList(int[] values, int config){
     LList l = new LList();
     l.size = values.length;
     for(int i = 0; i < values.length; i++){

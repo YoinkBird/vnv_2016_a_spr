@@ -36,6 +36,16 @@ public class LListTester{
     assertTrue(values.length == l.size);
   }
 
+  @Test public void testRepOk4NodesFail() {
+    LList l1 = new LList();
+    int values[] = new int[]{0,1,2,4};
+    LList l = l1.generateTestList(values);
+    assertTrue(l.repOk());
+    // create mismatch
+    l.size--;
+    assertFalse(values.length == l.size);
+  }
+
   @Test public void testStringMthds() {
     LList l1 = new LList();
     int values[] = new int[]{0,1,2,4};
