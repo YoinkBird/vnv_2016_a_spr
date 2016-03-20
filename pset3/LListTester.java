@@ -106,11 +106,29 @@ public class LListTester{
     Write some JUnit tests such that each test makes exactly one invocation of addLast
     and running all the tests provides full statement coverage for the method addLast
   */
-  @Ignore
   @Test public void test0(){
+    LList l = new LList();
+    int values[] = new int[]{};
+    String expected = "";
+    for(int n : values){
+      l.addLast(n);
+    }
+
+    assertEquals(expected, l.toString());
+    assertTrue(values.length == l.size);
+    assertTrue(l.repOk());
   }
-  @Ignore
   @Test public void test1(){
+    LList l = new LList();
+    int values[] = new int[]{0};
+    String expected = "0";
+    for(int n : values){
+      l.addLast(n);
+    }
+
+    assertEquals(expected, l.toString());
+    assertTrue(values.length == l.size);
+    assertTrue(l.repOk());
   }
 
   @Test public void addLast_test_toString() {
