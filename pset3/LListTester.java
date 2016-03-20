@@ -62,8 +62,8 @@ public class LListTester{
 
   @Test public void testStringMthds() {
     LList l1 = new LList();
-    int values[] = new int[]{0,1,2,4};
-    String expected = "4 2 1 0";
+    int values[] = new int[]{0,1,2,3};
+    String expected = "3 2 1 0";
     LList l = l1.generateTestList(values);
     assertTrue(l.repOk());
 
