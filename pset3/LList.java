@@ -124,6 +124,32 @@ public class LList { // loop-list
   public void addLast(int x) {
     // adds a new node with element x at the *tail* of the list
     // all other list nodes remain unchanged
+
+    // create new tail node
+    Node n = new Node();
+    n.elem = x;
+    n.next = n;
+
+    // iterate
+    Node current = header;
+    while(true){
+      // first node?
+      if(header == null){
+        header = n;
+        size++;
+        break;
+      }
+      // last node?
+      else if(current == current.next){
+        current.next = n;
+        size++;
+        break;
+      }
+      // iterate
+      else{
+        current = current.next;
+      }
+    }
   }
 
   public String repr(){
