@@ -85,6 +85,19 @@ public class LList { // loop-list
   public void addFirst(int x) {
     // adds a new node with element x at the *head* of the list
     // all other list nodes remain unchanged
+    Node n = new Node();
+    n.elem = x;
+    n.next = header;
+    // the first node is also the terminal node:
+    // if this is first addition (header == null)
+    // the current node needs a self-loop
+    // as it will be the terminal node as well
+    if(n.next == null){
+      n.next = n;
+    }
+
+    header = n;
+    size++;
   }
 
   // pset3_1c

@@ -41,6 +41,16 @@ public class LListTester{
     assertEquals(l.toString(),expected);
   }
 
+  @Test public void addFirst_test_toString() {
+    LList l = new LList();
+    int values[] = new int[]{0,1,2,3};
+    for(int n : values){
+      l.addFirst(n);
+    }
+    assertEquals(l.toString(),"3 2 1 0");
+    assertTrue(l.repOk());
+  }
+
   // pset2a JUnit Tests [6 points]
   /*
     Write some JUnit tests such that each test makes exactly one invocation of addLast
