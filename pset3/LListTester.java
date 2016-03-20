@@ -3,6 +3,17 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class LListTester{
+  @Test public void testStringMthds() {
+    LList l1 = new LList();
+    int values[] = new int[]{0,1,2,4};
+    String expected = "4 2 1 0";
+    LList l = l1.generateTestList(values);
+
+    System.out.println("LList.repr:" + l.repr());
+    System.out.println("LList.toString:[" + l.toString() + "]");
+    assertEquals(l.toString(),expected);
+  }
+
   // pset2a JUnit Tests [6 points]
   /*
     Write some JUnit tests such that each test makes exactly one invocation of addLast
