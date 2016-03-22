@@ -1,7 +1,11 @@
+# compile:
+# javac -g examples/Example.java
+# java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar  examples/Example.jpf
 target=examples.Example
 
 # here write your own classpath and un-comment
 # classpath=/home/user_name/example-project/bin
+classpath=${user.home}/workspace/vnv_2016_a_spr/jpf_learn
 
 symbolic.method= examples.Example.foo(sym#con)
 
