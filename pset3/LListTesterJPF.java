@@ -37,5 +37,6 @@ public class LListTesterJPF{
     if (a.length != 2) throw new IllegalArgumentException();
     final int SEQUENCE_LENGTH  = Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = Integer.parseInt(a[1]);
+
   }
 }
