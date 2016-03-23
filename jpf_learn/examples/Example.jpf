@@ -8,6 +8,7 @@ target=examples.Example
 classpath=${user.home}/workspace/vnv_2016_a_spr/jpf_learn
 
 symbolic.method=${target}.foo(sym#con)
+symbolic.method+=,${target}.addLast(sym)
 
 # listener to print information (PCs, test cases) about symbolic run
 
