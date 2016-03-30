@@ -1,8 +1,9 @@
 package examples;
 /*
  * run:
-javac -g examples/Example.java; java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar examples/Example.jpf 
+javac -g examples/Example.java && java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar examples/Example.jpf
  */
+//import gov.nasa.jpf.vm.Verify;
 
 public class Example {
 
@@ -33,14 +34,11 @@ public class Example {
       System.out.println("5");
     }
     // iterate
-    while(true){
-      if (x > y){
-        System.out.println("First");
-        break;
-      }else{
-        System.out.println("Second");
-        break;
+    while(y > 0){
+      if(x < 1){
+        x++;
       }
+      y--;
     }
   }
 
