@@ -9,17 +9,8 @@ public class Example {
 
   public static void main (String[] args) {
     Example ex = new Example();
-    //Verify.incrementCounter(1);
     final int SEQUENCE_LENGTH  = 3; // Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
-    // verify api
-    /*
-    boolean cond = Verify.getBoolean();
-    System.out.println("BOOL: " + cond);
-    */
-    // counter - id seems to just be to track number of counters
-    int ctr1 = Verify.getCounter(0);
-    int ctr2 = Verify.getCounter(1);
 
     // which value
     int value = Verify.getInt(0, ELEM_UPPER_BOUND);
