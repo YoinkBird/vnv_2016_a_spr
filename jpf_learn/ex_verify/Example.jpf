@@ -1,0 +1,29 @@
+# compile:
+# javac -g examples/Example.java
+# java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar  examples/Example.jpf
+# sh -c  'buildfile=Example; javac -verbose -cp .:/home/yoinkbird/workspace/jpf/jpf-core/build/jpf.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc-classes.jar -g ${buildfile}.java && java -cp . -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar $buildfile.jpf' |& tr ',' "\n"
+target=ex_verify.Example
+
+# here write your own classpath and un-comment
+# classpath=/home/user_name/example-project/bin
+classpath=${user.home}/workspace/vnv_2016_a_spr/jpf_learn
+
+#symbolic.method=${target}.foo(sym#con)
+#symbolic.method+=,${target}.addLast(sym)
+
+# listener to print information (PCs, test cases) about symbolic run
+
+#listener = gov.nasa.jpf.symbc.SymbolicListener
+
+# listener to print test sequences
+#listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
+
+# The following JPF options are usually used for SPF as well:
+
+# no state matching
+
+vm.storage.class=nil
+
+# instruct jpf not to stop at first error
+
+search.multiple_errors=true
