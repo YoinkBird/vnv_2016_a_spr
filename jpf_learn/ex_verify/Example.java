@@ -12,19 +12,20 @@ public class Example {
     final int SEQUENCE_LENGTH  = 3; // Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
 
+    int value = -1;
     // decide which method to test
     // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
     if(! Verify.getBoolean()){
       // which value
-      int value = Verify.getInt(0, ELEM_UPPER_BOUND);
+      value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
-      System.out.printf("\taddLast %d", value);
+      System.out.printf(" addLast %d", value);
     }
     else{
       // which value
-      int value = Verify.getInt(0, ELEM_UPPER_BOUND);
+      value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
-      System.out.printf("\taddFirst %d", value);
+      System.out.printf(" addFirst %d", value);
     }
     Verify.incrementCounter(0);
     System.out.println();
