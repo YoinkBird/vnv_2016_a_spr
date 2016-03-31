@@ -194,7 +194,7 @@ public class LList
             int mc = Verify.getCounter(methodCounter);
             seqLength = Verify.random(SEQUENCE_LENGTH);
             System.out.print("\t\t\t\t-D-: START: ");
-            System.out.print("seqLength: " + seqLength);
+            System.out.print(" seqLength: " + seqLength);
             System.out.print(" methodCounter: " + Verify.getCounter(methodCounter));
             System.out.print(" testCounter: " + Verify.getCounter(testCounter));
             System.out.println();
@@ -219,7 +219,7 @@ public class LList
                 }
                 Verify.incrementCounter(methodCounter);
                 System.out.print("\t\t\t\t\t-D-: mid: ");
-                System.out.println(" Verify.getCounter(methodCounter): " + Verify.getCounter(methodCounter));
+                System.out.println(" methodCounter: " + Verify.getCounter(methodCounter));
 
                 
             }
