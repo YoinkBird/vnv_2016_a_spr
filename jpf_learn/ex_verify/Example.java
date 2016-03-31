@@ -12,16 +12,18 @@ public class Example {
     final int SEQUENCE_LENGTH  = 3; // Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
 
-    // which value
-    int value = Verify.getInt(0, ELEM_UPPER_BOUND);
-    Verify.incrementCounter(0);
     // decide which method to test
-    if(Verify.getBoolean()){
-      System.out.printf("@Test %s\n", Verify.getCounter(0)); // test number
+    // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
+    if(! Verify.getBoolean()){
+      // which value
+      int value = Verify.getInt(0, ELEM_UPPER_BOUND);
+      System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
       System.out.printf("\taddLast %d", value);
     }
     else{
-      System.out.printf("@Test %s\n", Verify.getCounter(0)); // test number
+      // which value
+      int value = Verify.getInt(0, ELEM_UPPER_BOUND);
+      System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
       System.out.printf("\taddFirst %d", value);
     }
     Verify.incrementCounter(0);
@@ -88,3 +90,24 @@ public class Example {
   }
 
 }
+// sample output
+/*
+ <bound=1>
+   <seqlen=0>
+@Test public void test0() { LList l = new LList(); }
+   </seqlen=0>
+   <seqlen=1>
+@Test public void test1() { LList l = new LList(); l.addLast(0); }
+@Test public void test2() { LList l = new LList(); l.addLast(1); }
+@Test public void test3() { LList l = new LList(); l.addFirst(0); }
+@Test public void test4() { LList l = new LList(); l.addFirst(1); }
+   </seqlen=1>
+   <seqlen=2>
+@Test public void test5() { LList l = new LList(); l.addLast(0); l.addLast(0); }
+@Test public void test6() { LList l = new LList(); l.addLast(0); l.addLast(1); }
+@Test public void test7() { LList l = new LList(); l.addLast(0); l.addFirst(0); }
+   <.../>
+   </seqlen=2>
+   <.../>
+ </bound=1>
+*/
