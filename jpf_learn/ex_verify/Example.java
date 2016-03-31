@@ -13,6 +13,7 @@ public class Example {
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
 
     int value = -1;
+    int value2 = -1;
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
     System.out.print("\t\t\t\t\t-D-: mid: ");
     System.out.print(" seqLen: " + seqLen);
@@ -24,20 +25,25 @@ public class Example {
       // which value
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
+      System.out.printf("\t");
+      System.out.printf("1a: addLast %d", value);
       System.out.printf("\n\t");
-      System.out.printf("1: addLast %d", value);
       // second method call
       if(seqLen == 1){
         System.out.printf("\n");
         if(! Verify.getBoolean()){
           // which value
-          value = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t\t2: addLast %d", value);
+          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
+          System.out.printf("\t");
+          System.out.printf("1: addLast %d", value);
+          System.out.printf("\t2: addLast %d", value2);
         }
         else{
           // which value
-          value = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t\t2: addFirst %d", value);
+          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
+          System.out.printf("\t");
+          System.out.printf("1: addLast %d", value);
+          System.out.printf("\t2: addFirst %d", value2);
         }
       }
     }
@@ -46,20 +52,25 @@ public class Example {
       // which value
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
-      System.out.printf("\n\t");
-      System.out.printf("1: addFirst %d", value);
+      System.out.printf("\t");
+      System.out.printf("1b: addFirst %d", value);
+      System.out.printf("\t");
       // second method call
       if(seqLen == 1){
         System.out.printf("\n");
         if(! Verify.getBoolean()){
           // which value
-          value = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t\t2: addLast %d", value);
+          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
+          System.out.printf("\t");
+          System.out.printf("1: addFirst %d", value);
+          System.out.printf("\t2: addLast %d", value2);
         }
         else{
           // which value
-          value = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t\t2: addFirst %d", value);
+          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
+          System.out.printf("\t");
+          System.out.printf("1: addFirst %d", value);
+          System.out.printf("\t2: addFirst %d", value2);
         }
       }
     }
