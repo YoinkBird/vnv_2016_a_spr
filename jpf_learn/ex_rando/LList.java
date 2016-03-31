@@ -193,6 +193,12 @@ public class LList
 
             int mc = Verify.getCounter(methodCounter);
             seqLength = Verify.random(SEQUENCE_LENGTH);
+            System.out.print("\t\t\t\t-D-: START: ");
+            System.out.print("seqLength: " + seqLength);
+            System.out.print(" methodCounter: " + Verify.getCounter(methodCounter));
+            System.out.print(" testCounter: " + Verify.getCounter(testCounter));
+            System.out.println();
+
 
             if (Verify.getCounter(methodCounter) < seqLength)
             {
@@ -212,6 +218,8 @@ public class LList
                     Verify.resetCounter(methodCounter);
                 }
                 Verify.incrementCounter(methodCounter);
+                System.out.print("\t\t\t\t\t-D-: mid: ");
+                System.out.println(" Verify.getCounter(methodCounter): " + Verify.getCounter(methodCounter));
 
                 
             }
@@ -219,6 +227,10 @@ public class LList
                 System.out.println("@Test public void test" + Verify.getCounter(testCounter) + "(){");
                 System.out.println("\t" + className + " l = new " + className + "();");
             }
+            System.out.print("\t\t\t\t\t-D-: after: ");
+            System.out.print(" methodCounter: " + Verify.getCounter(methodCounter));
+            System.out.print(" testCounter: " + Verify.getCounter(testCounter));
+            System.out.println();
             Verify.incrementCounter(testCounter);
             System.out.println("}");
             System.out.println("@Test public void test" + Verify.getCounter(testCounter) + "(){");
