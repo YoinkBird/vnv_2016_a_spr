@@ -24,6 +24,7 @@ public class Example {
       // which value
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
+      System.out.printf("\n\t");
       System.out.printf("1: addLast %d", value);
       // second method call
       if(seqLen == 1){
@@ -45,6 +46,7 @@ public class Example {
       // which value
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
+      System.out.printf("\n\t");
       System.out.printf("1: addFirst %d", value);
       // second method call
       if(seqLen == 1){
