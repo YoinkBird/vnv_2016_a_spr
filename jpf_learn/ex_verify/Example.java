@@ -28,24 +28,6 @@ public class Example {
       System.out.printf("\t");
       System.out.printf("1a: addLast %d", value);
       System.out.printf("\n\t");
-      // second method call
-      if(seqLen == 1){
-        System.out.printf("\n");
-        if(! Verify.getBoolean()){
-          // which value
-          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t");
-          System.out.printf("1: addLast %d", value);
-          System.out.printf("\t2: addLast %d", value2);
-        }
-        else{
-          // which value
-          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t");
-          System.out.printf("1: addLast %d", value);
-          System.out.printf("\t2: addFirst %d", value2);
-        }
-      }
     }
     else{
       // first method call
@@ -55,24 +37,6 @@ public class Example {
       System.out.printf("\t");
       System.out.printf("1b: addFirst %d", value);
       System.out.printf("\t");
-      // second method call
-      if(seqLen == 1){
-        System.out.printf("\n");
-        if(! Verify.getBoolean()){
-          // which value
-          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t");
-          System.out.printf("1: addFirst %d", value);
-          System.out.printf("\t2: addLast %d", value2);
-        }
-        else{
-          // which value
-          value2 = Verify.getInt(0, ELEM_UPPER_BOUND);
-          System.out.printf("\t");
-          System.out.printf("1: addFirst %d", value);
-          System.out.printf("\t2: addFirst %d", value2);
-        }
-      }
     }
     Verify.incrementCounter(0);
     System.out.println();
