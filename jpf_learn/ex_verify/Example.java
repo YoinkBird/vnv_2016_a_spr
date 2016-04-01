@@ -12,11 +12,17 @@ public class Example {
     final int SEQUENCE_LENGTH  = 3; // Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
 
+    // track current test number
+    final int ctrTest = 0;
+    // track all verify.get* calls
+    final int ctrGet = 1;
+
     int value = -1;
     int value2 = -1;
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
-    System.out.print("\t\t\t\t\t-D-: mid: ");
-    System.out.print(" seqLen: " + seqLen);
+    Verify.incrementCounter(ctrGet);
+    System.out.print("-D-: init: \n");
+    System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
     // decide which method to test
     // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
@@ -38,8 +44,12 @@ public class Example {
       System.out.printf("1b: addFirst %d", value);
       System.out.printf("\t");
     }
-    Verify.incrementCounter(0);
+    Verify.incrementCounter(ctrTest);
     System.out.println();
+    if(seqLen > 3){
+      System.out.println("END_FOR");
+      System.out.printf("-I-: path %02d\n", Verify.getCounter(ctrGet)); // path number
+    }
 
 
 
