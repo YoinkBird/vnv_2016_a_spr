@@ -24,6 +24,41 @@ public class Example {
     System.out.print("-D-: init: \n");
     System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
+    //Verify.incrementCounter(ctrTest);
+    for(int i = 0; i <= seqLen; i++){
+      Verify.setCounter(2,i); // record index before backtracking
+      System.out.println();
+      System.out.print("  pre-branch[getInt]:");
+      System.out.println();
+      value = Verify.getInt(0, ELEM_UPPER_BOUND);
+      Verify.incrementCounter(ctrGet);
+      System.out.print("    branch[getInt]:");
+      System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
+
+      // TODO: boolean for addLast/addFirst
+      System.out.print("\t\t\t\t\t");
+      System.out.printf(" addLast %d", value);
+      /* propose replacement for legacy code */
+      /*
+      // decide which method to test
+      // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
+      System.out.println("\n    pre-branch[getBool]:");
+      if(! Verify.getBoolean()){
+        System.out.print("      branch[getBool]:");
+        System.out.print("\t\t\t\t\t");
+        System.out.printf(" addLast %d", value);
+      }
+      else{
+        System.out.print("      branch[getBool]:");
+        System.out.print("\t\t\t\t\t");
+        System.out.printf(" addFirst %d", value);
+      }
+      Verify.incrementCounter(ctrGet);
+      */
+
+
+      /* legacy code, may come in handy */
+    /*
     // decide which method to test
     // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
     if(! Verify.getBoolean()){
@@ -44,6 +79,8 @@ public class Example {
       System.out.printf("1b: addFirst %d", value);
       System.out.printf("\t");
     }
+    */
+    } // end for-loop
     Verify.incrementCounter(ctrTest);
     System.out.println();
     if(seqLen > 3){
