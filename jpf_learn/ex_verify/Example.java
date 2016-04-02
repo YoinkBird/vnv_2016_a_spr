@@ -26,7 +26,7 @@ public class Example {
     System.out.print("-D-: init: \n");
     System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
-    //String valArr[] = new String[seqLen];
+    // store values
     ArrayList<String> valArr = new ArrayList<String>();
     for(int i = 0; i <= seqLen; i++){
       Verify.setCounter(2,i); // record index before backtracking
@@ -45,7 +45,6 @@ public class Example {
       Verify.incrementCounter(ctrGet);
       System.out.print("\n        branch[getBool]:");
 
-      //valArr[i] = String.format("%s %d", methodName, value);
       String methodCall =  String.format("%s %d", methodName, value);
       valArr.add(methodCall);
     } // end for-loop
