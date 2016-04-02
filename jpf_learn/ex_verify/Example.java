@@ -1,4 +1,5 @@
 package ex_verify;
+import java.util.*;
 /*
  * run:
 javac -g examples/Example.java && java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar examples/Example.jpf
@@ -19,25 +20,44 @@ public class Example {
 
     int value = -1;
     int value2 = -1;
+    // backtrack 1
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
     Verify.incrementCounter(ctrGet);
     System.out.print("-D-: init: \n");
     System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
     //Verify.incrementCounter(ctrTest);
+    //String valArr[] = new String[seqLen];
+    ArrayList<String> valArr = new ArrayList<String>();
     for(int i = 0; i <= seqLen; i++){
       Verify.setCounter(2,i); // record index before backtracking
       System.out.println();
       System.out.print("  pre-branch[getInt]:");
       System.out.println();
+      // backtrack 2
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       Verify.incrementCounter(ctrGet);
       System.out.print("    branch[getInt]:");
       System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
 
+      System.out.print("\n      pre-branch[getBool]:");
+      // backtrack 3
+      String methodName = (Verify.getBoolean()) ? "addLast" : "addFirst";
+      Verify.incrementCounter(ctrGet);
+      System.out.print("\n        branch[getBool]:");
+
+      //System.out.print("\t\t\t\t\t");
+      //System.out.printf(methodName + value);
+      //valArr[i] = String.format("%s %d", methodName, value);
+      String methodCall =  String.format("%s %d", methodName, value);
+      valArr.add(methodCall);
+    } // end for-loop
+
       // TODO: boolean for addLast/addFirst
+      /*
       System.out.print("\t\t\t\t\t");
       System.out.printf(" addLast %d", value);
+      */
       /* propose replacement for legacy code */
       /*
       // decide which method to test
@@ -80,9 +100,15 @@ public class Example {
       System.out.printf("\t");
     }
     */
-    } // end for-loop
-    Verify.incrementCounter(ctrTest);
     System.out.println();
+    System.out.printf("@Test %02d {\n", Verify.getCounter(0)); // test number
+    for(String val : valArr){
+      System.out.print(val + " ");
+    }
+    System.out.printf("}"); // test number
+    System.out.printf("//@Test %02d\n", Verify.getCounter(0)); // test number
+    System.out.println();
+    Verify.incrementCounter(ctrTest);
     if(seqLen > 3){
       System.out.println("END_FOR");
       System.out.printf("-I-: path %02d\n", Verify.getCounter(ctrGet)); // path number
