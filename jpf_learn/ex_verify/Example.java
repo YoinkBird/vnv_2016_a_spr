@@ -14,6 +14,8 @@ public class Example {
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
     final String debugSpacer1 = "  -D-:";
 
+    ex.calcNumTestsAndPrint(SEQUENCE_LENGTH);
+
     // track current test number
     final int ctrTest = 0;
     // track all verify.get* calls
@@ -69,6 +71,30 @@ public class Example {
       System.out.printf("-I-: path %02d\n", Verify.getCounter(ctrGet)); // path number
     }
   }// </main>
+
+  // numTests[0] has total number of tests
+  public int[] calcNumTests(int SEQUENCE_LENGTH){
+    // calculate total num of tests
+    int numTests[] = new int[SEQUENCE_LENGTH+1];
+    numTests[0] = 0;
+    for(int i = 1; i < SEQUENCE_LENGTH+1; i++){
+      // 4 possibilities of binary choice (addFirst||addLast and 0||1)
+      numTests[i] = (int) Math.pow(4, i);
+      // update total number tests
+      numTests[0] += numTests[i];
+    }
+    return numTests;
+  }
+  // print out expected number of tests
+  public int[] calcNumTestsAndPrint(int SEQUENCE_LENGTH){
+    // calculate total num of tests
+    int numTests[] = this.calcNumTests(SEQUENCE_LENGTH);
+    for(int i = 1; i < numTests.length; i++){
+      System.out.printf("-I-: %03d tests with %d method calls\n", numTests[i], i);
+    }
+    System.out.printf("-I-: %03d tests will be generated for seqLen %d\n", numTests[0], SEQUENCE_LENGTH-1);
+    return numTests;
+  }
   
   /**********************/
   //ex.loopMess(SEQUENCE_LENGTH, ELEM_UPPER_BOUND);
