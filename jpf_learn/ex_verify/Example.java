@@ -25,7 +25,7 @@ public class Example {
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
     Verify.incrementCounter(ctrGet);
     System.out.print(debugSpacer1 + "init: \n");
-    System.out.print("branch: seqLen: " + seqLen);
+    System.out.print(debugSpacer1 + "branch: seqLen: " + seqLen);
     System.out.println();
     // store values
     ArrayList<String> valArr = new ArrayList<String>();
