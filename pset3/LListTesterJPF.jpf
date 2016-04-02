@@ -3,3 +3,9 @@
 target = LListTesterJPF
 target.args = 3,1
 classpath=.
+#listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
+#symbolic.method=${target}.LList.addLast(sym#con)
+#symbolic.method=${target}.addLast(sym)
+
+#symbolic.min_int=0
+#symbolic.max_int=3
