@@ -26,7 +26,6 @@ public class Example {
     System.out.print("-D-: init: \n");
     System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
-    //Verify.incrementCounter(ctrTest);
     //String valArr[] = new String[seqLen];
     ArrayList<String> valArr = new ArrayList<String>();
     for(int i = 0; i <= seqLen; i++){
@@ -46,60 +45,11 @@ public class Example {
       Verify.incrementCounter(ctrGet);
       System.out.print("\n        branch[getBool]:");
 
-      //System.out.print("\t\t\t\t\t");
-      //System.out.printf(methodName + value);
       //valArr[i] = String.format("%s %d", methodName, value);
       String methodCall =  String.format("%s %d", methodName, value);
       valArr.add(methodCall);
     } // end for-loop
 
-      // TODO: boolean for addLast/addFirst
-      /*
-      System.out.print("\t\t\t\t\t");
-      System.out.printf(" addLast %d", value);
-      */
-      /* propose replacement for legacy code */
-      /*
-      // decide which method to test
-      // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
-      System.out.println("\n    pre-branch[getBool]:");
-      if(! Verify.getBoolean()){
-        System.out.print("      branch[getBool]:");
-        System.out.print("\t\t\t\t\t");
-        System.out.printf(" addLast %d", value);
-      }
-      else{
-        System.out.print("      branch[getBool]:");
-        System.out.print("\t\t\t\t\t");
-        System.out.printf(" addFirst %d", value);
-      }
-      Verify.incrementCounter(ctrGet);
-      */
-
-
-      /* legacy code, may come in handy */
-    /*
-    // decide which method to test
-    // Note: the '!' is just to coincidentally match the sample output, may not always work, remove at leisure
-    if(! Verify.getBoolean()){
-      // first method call
-      // which value
-      value = Verify.getInt(0, ELEM_UPPER_BOUND);
-      System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
-      System.out.printf("\t");
-      System.out.printf("1a: addLast %d", value);
-      System.out.printf("\n\t");
-    }
-    else{
-      // first method call
-      // which value
-      value = Verify.getInt(0, ELEM_UPPER_BOUND);
-      System.out.printf("@Test %02d", Verify.getCounter(0)); // test number
-      System.out.printf("\t");
-      System.out.printf("1b: addFirst %d", value);
-      System.out.printf("\t");
-    }
-    */
     System.out.println();
     System.out.printf("@Test %02d {\n", Verify.getCounter(0)); // test number
     for(String val : valArr){
@@ -113,15 +63,10 @@ public class Example {
       System.out.println("END_FOR");
       System.out.printf("-I-: path %02d\n", Verify.getCounter(ctrGet)); // path number
     }
-
-
-
-
-    /**********************/
-    //ex.loopMess(SEQUENCE_LENGTH, ELEM_UPPER_BOUND);
-
-  }
+  }// </main>
   
+  /**********************/
+  //ex.loopMess(SEQUENCE_LENGTH, ELEM_UPPER_BOUND);
   public void loopMess(int SEQUENCE_LENGTH, int ELEM_UPPER_BOUND){
     int counter = 0;
     Verify.resetCounter(0);
