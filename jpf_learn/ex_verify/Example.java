@@ -40,11 +40,12 @@ public class Example {
       System.out.print(debugSpacer1 + "    branch[getInt]:");
       System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
 
-      System.out.print("\n" + debugSpacer1 + "      pre-branch[getBool]:");
+      System.out.println();
+      System.out.print(debugSpacer1 + "      pre-branch[getBool]:\n");
       // backtrack 3
       String methodName = (Verify.getBoolean()) ? "addLast" : "addFirst";
       Verify.incrementCounter(ctrGet);
-      System.out.print("\n" + debugSpacer1 + "        branch[getBool]:");
+      System.out.print(debugSpacer1 + "        branch[getBool]:");
 
       // format: l.<addLast|addFirst>(<0|1>)
       String methodCall =  String.format("l.%s(%d)", methodName, value);
@@ -61,7 +62,7 @@ public class Example {
     }
     System.out.printf("}"); // test number
     System.out.printf("//@Test %02d\n", Verify.getCounter(0)); // test number
-    System.out.println();
+
     Verify.incrementCounter(ctrTest);
     if(seqLen > 3){
       System.out.println("END_FOR");
