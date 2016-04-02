@@ -46,14 +46,18 @@ public class Example {
       Verify.incrementCounter(ctrGet);
       System.out.print("\n" + debugSpacer1 + "        branch[getBool]:");
 
-      String methodCall =  String.format("%s %d", methodName, value);
+      // format: l.<addLast|addFirst>(<0|1>)
+      String methodCall =  String.format("l.%s(%d)", methodName, value);
       valArr.add(methodCall);
     } // end for-loop
 
     System.out.println();
-    System.out.printf("@Test %02d {\n", Verify.getCounter(0)); // test number
+    System.out.printf("@Test public void test%02d() { ", Verify.getCounter(0)); // test number
+    //System.out.println(); // comment for test body on one-line
+    System.out.print("LList l = new LList(); ");
+    //System.out.println(); // comment for test body on one-line
     for(String val : valArr){
-      System.out.print(val + " ");
+      System.out.print(val + "; ");
     }
     System.out.printf("}"); // test number
     System.out.printf("//@Test %02d\n", Verify.getCounter(0)); // test number
@@ -123,21 +127,22 @@ public class Example {
 // sample output
 /*
  <bound=1>
-   <seqlen=0>
+   <seqlen=2>
 @Test public void test0() { LList l = new LList(); }
-   </seqlen=0>
-   <seqlen=1>
+   </seqlen=2>
+   <seqlen=3>
 @Test public void test1() { LList l = new LList(); l.addLast(0); }
 @Test public void test2() { LList l = new LList(); l.addLast(1); }
 @Test public void test3() { LList l = new LList(); l.addFirst(0); }
 @Test public void test4() { LList l = new LList(); l.addFirst(1); }
-   </seqlen=1>
-   <seqlen=2>
+   </seqlen=3>
+   <seqlen=4>
 @Test public void test5() { LList l = new LList(); l.addLast(0); l.addLast(0); }
+
 @Test public void test6() { LList l = new LList(); l.addLast(0); l.addLast(1); }
 @Test public void test7() { LList l = new LList(); l.addLast(0); l.addFirst(0); }
    <.../>
-   </seqlen=2>
+   </seqlen=4>
    <.../>
  </bound=1>
 */
