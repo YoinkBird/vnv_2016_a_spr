@@ -28,10 +28,9 @@ public class Example {
     Verify.incrementCounter(ctrGet);
     System.out.print(debugSpacer1 + "init: \n");
     System.out.print(debugSpacer1 + "branch: seqLen: " + seqLen);
-    System.out.println();
     // store values
     ArrayList<String> valArr = new ArrayList<String>();
-    for(int i = 0; i <= seqLen; i++){
+    for(int i = 0; i < seqLen; i++){
       Verify.setCounter(2,i); // record index before backtracking
       System.out.println();
       System.out.print(debugSpacer1 + "  pre-branch[getInt]:");
@@ -74,14 +73,17 @@ public class Example {
 
   // numTests[0] has total number of tests
   public int[] calcNumTests(int SEQUENCE_LENGTH){
-    // calculate total num of tests
+    // zero index to store total, all others for numTests per length
     int numTests[] = new int[SEQUENCE_LENGTH+1];
     numTests[0] = 0;
-    for(int i = 1; i < SEQUENCE_LENGTH+1; i++){
+    for(int i = 1; i < numTests.length; i++){
+      // sequences start at zero but loop starts at 1
+      int seqNumber = i - 1;
       // 4 possibilities of binary choice (addFirst||addLast and 0||1)
-      numTests[i] = (int) Math.pow(4, i);
+      numTests[i] = (int) Math.pow(4, seqNumber);
       // update total number tests
       numTests[0] += numTests[i];
+      //debug// System.out.printf("-II-: %03d tests with %d method calls\n", numTests[i], i);
     }
     return numTests;
   }
@@ -90,9 +92,9 @@ public class Example {
     // calculate total num of tests
     int numTests[] = this.calcNumTests(SEQUENCE_LENGTH);
     for(int i = 1; i < numTests.length; i++){
-      System.out.printf("-I-: %03d tests with %d method calls\n", numTests[i], i);
+      System.out.printf("-I-: %03d tests with %d method calls\n", numTests[i], i-1);
     }
-    System.out.printf("-I-: %03d tests will be generated for seqLen %d\n", numTests[0], SEQUENCE_LENGTH-1);
+    System.out.printf("-I-: %03d tests will be generated for seqLen %d\n", numTests[0], SEQUENCE_LENGTH);
     return numTests;
   }
   
@@ -153,23 +155,23 @@ public class Example {
 }
 // sample output
 /*
- <bound=1>
-   <seqlen=2>
+   generate 4^(SEQUENCE_LENGTH - 1)
+ <upper_bound=1>
+   <seqlen=1>< 4^(1-1) = 001 tests with 0 method calls/>
 @Test public void test0() { LList l = new LList(); }
-   </seqlen=2>
-   <seqlen=3>
+   </seqlen=1>
+   <seqlen=2>< 4^(2-1) = 004 tests with 1 method calls/>
 @Test public void test1() { LList l = new LList(); l.addLast(0); }
 @Test public void test2() { LList l = new LList(); l.addLast(1); }
 @Test public void test3() { LList l = new LList(); l.addFirst(0); }
 @Test public void test4() { LList l = new LList(); l.addFirst(1); }
-   </seqlen=3>
-   <seqlen=4>
+   </seqlen=2>
+   <seqlen=3>< 4^(3-1) = 016 tests with 2 method calls/>
 @Test public void test5() { LList l = new LList(); l.addLast(0); l.addLast(0); }
 
 @Test public void test6() { LList l = new LList(); l.addLast(0); l.addLast(1); }
 @Test public void test7() { LList l = new LList(); l.addLast(0); l.addFirst(0); }
    <.../>
-   </seqlen=4>
-   <.../>
- </bound=1>
+   </seqlen=3>
+ </upper_bound=1>
 */
