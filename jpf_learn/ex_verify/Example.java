@@ -12,6 +12,7 @@ public class Example {
     Example ex = new Example();
     final int SEQUENCE_LENGTH  = 3; // Integer.parseInt(a[0]);
     final int ELEM_UPPER_BOUND = 1; // Integer.parseInt(a[1]);
+    final String debugSpacer1 = "  -D-:";
 
     // track current test number
     final int ctrTest = 0;
@@ -23,7 +24,7 @@ public class Example {
     // backtrack 1
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
     Verify.incrementCounter(ctrGet);
-    System.out.print("-D-: init: \n");
+    System.out.print(debugSpacer1 + "init: \n");
     System.out.print("branch: seqLen: " + seqLen);
     System.out.println();
     // store values
@@ -31,19 +32,19 @@ public class Example {
     for(int i = 0; i <= seqLen; i++){
       Verify.setCounter(2,i); // record index before backtracking
       System.out.println();
-      System.out.print("  pre-branch[getInt]:");
+      System.out.print(debugSpacer1 + "  pre-branch[getInt]:");
       System.out.println();
       // backtrack 2
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       Verify.incrementCounter(ctrGet);
-      System.out.print("    branch[getInt]:");
+      System.out.print(debugSpacer1 + "    branch[getInt]:");
       System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
 
-      System.out.print("\n      pre-branch[getBool]:");
+      System.out.print("\n" + debugSpacer1 + "      pre-branch[getBool]:");
       // backtrack 3
       String methodName = (Verify.getBoolean()) ? "addLast" : "addFirst";
       Verify.incrementCounter(ctrGet);
-      System.out.print("\n        branch[getBool]:");
+      System.out.print("\n" + debugSpacer1 + "        branch[getBool]:");
 
       String methodCall =  String.format("%s %d", methodName, value);
       valArr.add(methodCall);

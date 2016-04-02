@@ -4,6 +4,10 @@
 # sh -c  'buildfile=Example; javac -verbose -cp .:/home/yoinkbird/workspace/jpf/jpf-core/build/jpf.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc-classes.jar -g ${buildfile}.java && java -cp . -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar $buildfile.jpf' |& tr ',' "\n"
 # check output: only list calls to 'add', treat 'addFirst','addLast' as binary values, sort resulting binary values, count to verify number
 # | grep add | sed 's|addFirst|0|g' | sed 's|addLast|1|g' |  sort | wc
+# hide debug with:
+# | grep -v '\-D-:'
+# show only debug with:
+# | grep '\-D-:'
  
 target=ex_verify.Example
 
