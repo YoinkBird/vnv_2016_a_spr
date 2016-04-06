@@ -9,6 +9,7 @@ import gov.nasa.jpf.vm.Verify;
 // src: http://babelfish.arc.nasa.gov/trac/jpf/wiki/user/run#command-line
 public class LListTesterJPF{
   static int debugEn = 0; // enable debug output
+  static int printTestOneline = 0; // print test on one line
   // JPF test generator [14 points]
   /*
     Implement the following main method such that running it using the JPF JVM
@@ -94,13 +95,27 @@ public class LListTesterJPF{
       System.out.println();
     }
     System.out.printf("@Test public void test%02d() { ", Verify.getCounter(0)); // test number
-    //System.out.println(); // comment for test body on one-line
+    if(printTestOneline == 1){
+      System.out.println(); // comment for test body on one-line
+    }
+    System.out.print("  "); // comment for test body on one-line
     System.out.print("LList l = new LList(); ");
-    //System.out.println(); // comment for test body on one-line
+    if(printTestOneline == 1){
+      System.out.println(); // comment for test body on one-line
+    }
     for(String val : valArr){
+      if(printTestOneline == 1){
+        System.out.print("  "); // comment for test body on one-line
+      }
       System.out.print(val + "; ");
+      if(printTestOneline == 1){
+        System.out.println(); // comment for test body on one-line
+      }
     }
     System.out.printf("}"); // test number
+    if(printTestOneline == 1){
+      System.out.println(); // comment for test body on one-line
+    }
     System.out.printf("//@Test %02d\n", Verify.getCounter(0)); // test number
 
     Verify.incrementCounter(ctrTest);
@@ -136,4 +151,4 @@ public class LListTesterJPF{
     System.out.printf("-I-: %03d tests will be generated for seqLen %d\n", numTests[0], SEQUENCE_LENGTH);
     return numTests;
   }
-}
+    }
