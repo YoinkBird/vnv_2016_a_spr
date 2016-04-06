@@ -13,4 +13,5 @@ fi
 java org.junit.runner.JUnitCore $java_target;
 
 # sample complex build:
-# sh -c  'buildfile=MySymbolicDriverForBST; javac -verbose -cp .:/home/yoinkbird/workspace/jpf/jpf-core/build/jpf.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc.jar:/home/yoinkbird/workspace/jpf/jpf-symbc/build/jpf-symbc-classes.jar -g ${buildfile}.java && java -jar ~/workspace/jpf/jpf-core/build/RunJPF.jar $buildfile.jpf' |& tr ',' "\n"
+# oneline:
+#  env CLASSPATH=.:/home/yoinkbird/workspace/res/junit/4.10/junit.jar sh -cx  'buildfile=LListTester; javac -Xlint:unchecked -g ${buildfile}.java && java org.junit.runner.JUnitCore $buildfile'
