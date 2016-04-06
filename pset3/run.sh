@@ -1,6 +1,6 @@
 #!/bin/sh
 set -x
-export JUNIT_HOME=/home/yoinkbird/workspace/res/junit/4.10
+export JUNIT_HOME=`echo ~/workspace/res/junit/4.10`
 export CLASSPATH=".:${JUNIT_HOME}/junit.jar"
 java_target_file="LListTester.java";
 javac_files="$java_target_file"
