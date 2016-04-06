@@ -9,7 +9,13 @@ public class Sort{
     if(in  == null) throw new IllegalArgumentException();
     if(out == null) throw new IllegalArgumentException();
 
-    return isOrdered(out) && isPermutation(in,out);
+    //return isOrdered(out) && isPermutation(in,out);
+    if( isOrdered(out)){
+      if(isPermutation(in,out)){
+        return true;
+      }
+    }
+    return false;
   }
 
   static int count(int[] arr, int x){
