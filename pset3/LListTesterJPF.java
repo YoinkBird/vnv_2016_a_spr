@@ -8,6 +8,7 @@ import gov.nasa.jpf.vm.Verify;
 // java -jar ${JPF_HOME}/jpf-core/build/RunJPF.jar  +classpath=. LListTesterJPF 3 1
 // src: http://babelfish.arc.nasa.gov/trac/jpf/wiki/user/run#command-line
 public class LListTesterJPF{
+  static int debugEn = 0; // enable debug output
   // JPF test generator [14 points]
   /*
     Implement the following main method such that running it using the JPF JVM
@@ -54,34 +55,44 @@ public class LListTesterJPF{
     // backtrack 1
     int seqLen = Verify.getInt(0, SEQUENCE_LENGTH - 1);
     Verify.incrementCounter(ctrGet);
-    System.out.print(debugSpacer1 + "init: \n");
-    System.out.print(debugSpacer1 + "branch: seqLen: " + seqLen);
+    if(debugEn == 1){
+      System.out.print(debugSpacer1 + "init: \n");
+      System.out.print(debugSpacer1 + "branch: seqLen: " + seqLen);
+    }
     // store values
     ArrayList<String> valArr = new ArrayList<String>();
     for(int i = 0; i < seqLen; i++){
       Verify.setCounter(2,i); // record index before backtracking
-      System.out.println();
-      System.out.print(debugSpacer1 + "  pre-branch[getInt]:");
-      System.out.println();
+      if(debugEn == 1){
+        System.out.println();
+        System.out.print(debugSpacer1 + "  pre-branch[getInt]:");
+        System.out.println();
+      }
       // backtrack 2
       value = Verify.getInt(0, ELEM_UPPER_BOUND);
       Verify.incrementCounter(ctrGet);
-      System.out.print(debugSpacer1 + "    branch[getInt]:");
-      System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
+      if(debugEn == 1){
+        System.out.print(debugSpacer1 + "    branch[getInt]:");
+        System.out.printf(" pre-i, i, getInt: %d|%d,%d", Verify.getCounter(2), i, value);
 
-      System.out.println();
-      System.out.print(debugSpacer1 + "      pre-branch[getBool]:\n");
+        System.out.println();
+        System.out.print(debugSpacer1 + "      pre-branch[getBool]:\n");
+      }
       // backtrack 3
       String methodName = (Verify.getBoolean()) ? "addLast" : "addFirst";
       Verify.incrementCounter(ctrGet);
-      System.out.print(debugSpacer1 + "        branch[getBool]:");
+      if(debugEn == 1){
+        System.out.print(debugSpacer1 + "        branch[getBool]:");
+      }
 
       // format: l.<addLast|addFirst>(<0|1>)
       String methodCall =  String.format("l.%s(%d)", methodName, value);
       valArr.add(methodCall);
     } // end for-loop
 
-    System.out.println();
+    if(debugEn == 1){
+      System.out.println();
+    }
     System.out.printf("@Test public void test%02d() { ", Verify.getCounter(0)); // test number
     //System.out.println(); // comment for test body on one-line
     System.out.print("LList l = new LList(); ");
