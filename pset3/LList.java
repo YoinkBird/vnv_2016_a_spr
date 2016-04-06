@@ -130,6 +130,18 @@ public class LList { // loop-list
     n.elem = x;
     n.next = n;
 
+    /* experimental
+    // first node?
+    if(header == null){
+      header = n;
+      size++;
+    }
+    else{
+      while(current.next != current){
+      }
+    }
+    */
+
     // iterate
     Node current = header;
     while(true){
