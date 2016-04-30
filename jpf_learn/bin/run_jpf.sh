@@ -66,6 +66,9 @@ main(){
   # get filename, classpath based on pwd and package
   curDir=`pwd`;
   fileRoot=`basename $curDir`;
+  mainClassFile=`grep -Pl '\bmain\b\s*\(String.*?args.*?\)' $curDir/*`;
+  mainClassFile=`basename $mainClassFile`;
+  mainClassFileRoot=`echo $mainClassFile | perl -nle 'if(m|(.*?).java|g){print $1}'`
   if [ $# -ne 0 ]; then
     fileRoot=$1;
   fi
@@ -75,6 +78,11 @@ main(){
   #TODO: check that it is a file and not a dir
   if [ ! -r $fileRoot ]; then
     fileName=${fileRoot}.java;
+  fi
+  # if dir-based name detection doesn't work, try the experimental 'grep main' detection
+  if [ ! -r $fileName ]; then
+    fileName=$mainClassFile
+    fileRoot=$mainClassFileRoot
   fi
   # error if file not found
   if [ ! -r $fileName ]; then
